@@ -1,0 +1,11 @@
+{
+  "name": "pop-loaderh",
+  "version": "1.0.0",
+  "description": "An eazy to use json loader that returns promises ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
