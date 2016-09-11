@@ -19,7 +19,7 @@ export function loadData(url, expectedStatus, apiToken) {
 		
 		req.onerror = e => {
 			let res = e.currentTarget.statusText;
-			reject(new Error('Error of status : ' + res));
+			return reject(new Error('Error of status : ' + res));
 		}
 
 		req.send();
@@ -47,7 +47,7 @@ export function updateData(url, payload, expectedStatus = 200, apiToken) {
 
 		req.onerror = e => {
 			let res = e.currentTarget.statusText;
-			reject(new Error('Error of status : ' + res));
+			return reject(new Error('Error of status : ' + res));
 		};
 
 		req.send(JSON.stringify(payload));
@@ -74,7 +74,7 @@ export function sendData(url, payload, expectedStatus = 201, apiToken) {
 
 		req.onerror = e => {
 			let res = e.statusText;
-			reject(new Error('Error of status : ' + res));
+			return reject(new Error('Error of status : ' + res));
 		};
 
 		req.send(JSON.stringify	(payload));
@@ -90,15 +90,15 @@ export function deleteRequest(url, apiToken) {
 
 		req.onload = e => {
 			if(req.status === 200 || req.status === 204) {
-				resolve();
+				return resolve();
 			} else {
-				reject();
+				return reject();
 			}
 		};
 
 		req.onerror = e => {
 			let res = e.currentTarget.statusText;
-			reject(new Error('Error of status : ' + res));
+			reject(new Error(res));
 		};
 
 		req.send();
@@ -107,7 +107,7 @@ export function deleteRequest(url, apiToken) {
 
 function setTokenHeader(req, apiToken) {
 	if(apiToken) {
-		req.setRequestHeader('auth', apiToken);
+		req.setRequestHeader('Authorization', apiToken);
 	}
 
 	return req;

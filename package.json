@@ -1,5 +1,5 @@
 {
-  "name": "pop-loaderh",
+  "name": "pop-loader",
   "version": "1.0.0",
   "description": "An eazy to use json loader that returns promises ",
   "main": "index.js",
